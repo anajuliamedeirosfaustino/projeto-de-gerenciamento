@@ -77,7 +77,7 @@ i{
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     outline: none;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: #40414a;
 }
 
@@ -123,14 +123,51 @@ i{
     }
     .text{
         position: absolute;
-        top: 70%;
+        top: 80%;
         text-align: center;
     }
     .text p, i{
-        font-size: 16px;
+        font-size: 12px;
     }
     .row{
         max-width:420px;
         width: 100%;
     }
+}
+
+.input-field i {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    visibility: hidden;
+}
+
+.input-field small {
+    position: relative;
+    left: 0;
+    bottom: 15px;
+    visibility: hidden;
+}
+
+/* Error and Success */
+.input-field.success input {
+    border-color: #2ecc71;
+
+}
+.input-field.error input {
+    border-color: #e74c3c;
+
+}
+
+.input-field.success i.fa-check-circle {
+    color: #2ecc71;
+    visibility: visible;
+}
+.input-field.error i.fa-exclamation-circle {
+    color: #e74c3c;
+    visibility: visible;
+}
+.input-field.error small {
+    color: #e74c3c;
+    visibility: visible;
 }

@@ -1,3 +1,46 @@
 #logout {
   cursor: pointer;
 }
+
+#edit-form p {
+  display: flex;
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  font-weight: bold;
+
+
+}
+
+.form-control input {
+  margin-right: 0.3rem;
+}
+
+#cancel-edit-btn {
+  margin-top: 1rem;
+}
+
+.todo {
+  margin: 0;
+  padding: 0;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+#edit-form button {
+  margin-left: 0.4rem;
+  justify-content: space-between;
+}
+
+#edit-form button:hover {
+  background-color: rgb(41, 88, 158);
+  color: #ddd;
+  transition: 600ms;
+}
+
+.hide{
+  display: none;
+}

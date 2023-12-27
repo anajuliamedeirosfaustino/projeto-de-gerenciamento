@@ -1,143 +1,200 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gerenciamento de Tarefas</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="styleManageTasks.css" />
-  </head>
-  <body>
-    <nav
-      class="d-flex justify-content-between navbar navbar-expand-lg bg-black"
-    >
-      <a class="navbar-brand text-light" id="usuarioSessao" href="#"
-        >Bem vindo</a
-      >
-      <a class="navbar-brand text-light" id="logout" onclick="logoutUser()"
-        >Sair</a
-      >
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleManageTasks.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" id="usuarioSessaoNome">{usuarioNome}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu de ações</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html" aria-current="page" href="#">Sair</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </nav>
-    <div class="container-fluid mt-5" style="width: 45%">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <h1 class="text-center mb-2" style="margin-top: 8%">
-            Gerenciador de tarefas
-          </h1>
-          <form id="criacaoTarefa" onsubmit="adicionarTarefa(event);">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="mb-3">
-                  <label for="nomeTarefa" class="form-label">Tarefa</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="nomeTarefa"
-                    placeholder="Tarefa"
-                  />
-                </div>
-              </div>
+
+    <div class="container-fluid mt-5" style="width: 45%;">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="text-center mb-2" style="margin-top: 8%;">Gerenciador de tarefas</h1>
+                <form id="criacaoTarefa" onsubmit="adicionarTarefa(event);">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="nomeTarefa" class="form-label">Tarefa</label>
+                                <input type="text" class="form-control" id="nomeTarefa" placeholder="Tarefa" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="dataInicio" class="form-label">Data início</label>
+                                <input type="date" class="form-control" id="dataInicio" placeholder="data_inicio"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="horaInicio" class="form-label">Hora início</label>
+                                <input type="time" class="form-control" id="horaInicio" placeholder="hora_inicio"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="dataTermino" class="form-label">Data término</label>
+                                <input type="date" class="form-control" id="dataTermino" placeholder="Data_termino"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="horaTermino" class="form-label">Hora término</label>
+                                <input type="time" class="form-control" id="horaTermino" placeholder="Hora_término"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="descricaoTarefa" class="form-label">Descrição</label>
+                                <textarea class="form-control" id="descricaoTarefa" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                </form>
+                <form id="edicaoTarefa" style="display: none;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="nomeTarefa" class="form-label">Tarefa</label>
+                                <input type="text" class="form-control" id="nomeTarefaEdit" placeholder="Tarefa"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="dataInicio" class="form-label">Data início</label>
+                                <input type="date" class="form-control" id="dataInicioEdit" placeholder="data_inicio"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="horaInicio" class="form-label">Hora início</label>
+                                <input type="time" class="form-control" id="horaInicioEdit" placeholder="hora_inicio"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="dataTermino" class="form-label">Data término</label>
+                                <input type="date" class="form-control" id="dataTerminoEdit" placeholder="Data_termino"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="horaTermino" class="form-label">Hora término</label>
+                                <input type="time" class="form-control" id="horaTerminoEdit" placeholder="Hora_término"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="descricaoTarefa" class="form-label">Descrição</label>
+                                <textarea class="form-control" id="descricaoTarefaEdit" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                        <a type="submit" onclick="alterarTarefa(event);" class="btn btn-primary">Alterar tarefa<a>
+                                <a type="button" onclick="excluirTarefa(event);" class="btn btn-danger">Excluir
+                                    tarefa</a>
+                                <a type="button" onclick="alterarStatus(event);" class="btn btn-success">Marcar como
+                                    realizada</a>
+                                <a type="button" href="manageTasks.html" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
             </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="dataInicio" class="form-label">Data início</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="dataInicio"
-                    placeholder="data_inicio"
-                  />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="horaInicio" class="form-label">Hora início</label>
-                  <input
-                    type="time"
-                    class="form-control"
-                    id="horaInicio"
-                    placeholder="hora_inicio"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="dataTermino" class="form-label"
-                    >Data término</label
-                  >
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="dataTermino"
-                    placeholder="Data_termino"
-                  />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="horaTermino" class="form-label"
-                    >Hora término</label
-                  >
-                  <input
-                    type="time"
-                    class="form-control"
-                    id="horaTermino"
-                    placeholder="Hora_término"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="mb-3">
-                  <label for="descricaoTarefa" class="form-label"
-                    >Descrição</label
-                  >
-                  <textarea
-                    class="form-control"
-                    id="descricaoTarefa"
-                    rows="4"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-success">Cadastrar</button>
-          </form>
         </div>
-      </div>
     </div>
 
-    <div class="container-fluid mt-5" style="width: 70%">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <!-- Ajuste o tamanho da coluna conforme necessário -->
-          <!-- Restante do seu código -->
-          <table id="tabelaTarefas" class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Tarefa</th>
-                <th scope="col">Início</th>
-                <th scope="col">Término</th>
-                <th scope="col">Status</th>
-                <th scope="col">Alterar</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Aqui serão inseridas as linhas da tabela com as tarefas -->
-            </tbody>
-          </table>
+    <div class="container-fluid mt-5" style="width: 70%;">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <table id="tabelaTarefas" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Tarefa</th>
+                            <th scope="col">Início</th>
+                            <th scope="col">Término</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Alterar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </div>
     </div>
-
     <script src="scriptManagement.js"></script>
-  </body>
+</body>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
 </html>
